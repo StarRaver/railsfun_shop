@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop</title>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>使用者後台:dashboard</h1>
+
+  Hi! <%= current_user.email %>, <%= link_to "登出", destroy_user_session_path, :method => 'delete' %>
+
+<hr />
+<%= will_paginate @paginate if @paginate%>  <% comment = "為了省每次有分頁就要寫一次will_paginate @model" %>
+<hr />
+
+<%= yield %>
+
+<hr />
+<%= will_paginate @paginate if @paginate%>  <% comment = "為了省每次有分頁就要寫一次will_paginate @model" %>
+<hr />
+
+</body>
+</html>
