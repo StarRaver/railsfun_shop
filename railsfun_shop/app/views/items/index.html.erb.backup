@@ -1,0 +1,62 @@
+<% content_for :header do %> <!--將此段內容塞至application layout的yield header內-->
+<style>
+  ul.items, ul.items li{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  ul.items li{
+    display:block;
+    float:left;
+    border:1px #ccc solid;
+    border-radius:6px;
+    width:120px;
+    height:180px;
+    margin:4px 0 0 4px;
+    text-align:center;
+  }
+  ul.items li img{
+    width:120px;
+    height:120px;
+    display:block;
+    border-radius:3px;
+  }
+  ul.items li .name{
+    display:block;
+  }
+  ul.items li a{
+    display:inner-block;
+    background:#ccccff;
+    padding:4px 8px;
+    border-radius:3px;
+  }
+</style>
+
+
+<script>
+  jQuery(function($){
+    $('.add_cart').click(function(){ <!--當點擊'加入購物車後'-->
+      $.getJSON('/items/' + $(this).attr('data-value') + '/add_cart', function(json){ <!--接item controller的add_cart action 回傳的 JSON-->
+        $('#cart_counter').html(json.counter);<!--對layout的cart_counter更新 -->
+      });
+      return false; <!--避免點擊連結後觸發跳到別的網頁-->
+    });
+  });
+</script>
+<% end %>
+
+<h1>Listing Items</h1>
+ooooooooo
+<ul class = 'items'>
+  <% @items.each do |item| %>
+    <li>
+      <%= image_tag item.cover.url(:icon) %>
+      <span class='name'><%= item.name %>(<%= item.price %>)</span>
+      <a href="#" class='add_cart' data-value="<%= item.id%>">加入購物車</a>
+    </li>
+  <% end %>
+</ul>
+<!--
+<br>
+<%= link_to 'New Item', new_item_path %>
+-->

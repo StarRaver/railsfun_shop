@@ -23,5 +23,6 @@ module Shop
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.web_console.whitelisted_ips = '36.231.102.32'
     config.active_record.raise_in_transactional_callbacks = true
+    require 'hello_kitty'
   end
 end

@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+<%# if false %>
+<%# link_to "goto root", root_path(:wer => 123, :sdf => 234) %><br />
+<%# link_to "goto hihi", hihihihi_path(:hello => "kitty") %>
+<%# link_to "goto yooo", yooo_path(Item.first, :xcv => "cvb")%>
+<%# end %>
+<%#= HelloKitty.say%>
+<%#= link_to "root", root_path %>
+<%#= link_to "kitty", kitty_path , :method => "post"%>
+<%#= link_to "kitty2", kitty2_path, :method => "delete" %>
+<%#= form_for Item.new ,:url => kitty2_path, :method => 'delete' do |f| %>
+  <%#= f.text_field :name %>
+<!--
+  <input name="single" value="1">
+  <input name="im_array[]" value="2">
+  <input name="im_array[]" value="3">
+  <input name="im_hash[im_key1]" value="?">
+  <input name="im_hash[im_key2]" value="!">
+  <button type="submit">送出</button>
+-->
+<%# end %>
+<% content_for :header do %>
+我要出現在上面
+<% end %>
+<% content_for :footer do %>
+我要出現在下面
+<% end %>
+<%= @ans.class %>
+<%= form_tag("/items") do %>
+  <%= show_simple_captcha %>
+  <button type="submit">送出</button>
+<% end %>

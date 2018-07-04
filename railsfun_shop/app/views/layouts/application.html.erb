@@ -7,24 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<h1>對外頁面:public</h1>
-
-<% if current_user %>
-  Hi! <%= current_user.email %>, <%= link_to "登出", destroy_user_session_path, :method => 'delete' %>
-<% else %>
-  <%= link_to '登入' , new_user_session_path %>, <%= link_to '註冊' , new_user_registration_path %>
-<% end %>
-
-<hr />
-<%= will_paginate @paginate if @paginate%>  <% comment = "為了省每次有分頁就要寫一次will_paginate @model" %>
-<hr />
-
-<%= yield %>
-
-<hr />
-<%= will_paginate @paginate if @paginate%>  <% comment = "為了省每次有分頁就要寫一次will_paginate @model" %>
-<hr />
-
+  <div class="header">
+    im Header
+    <%= yield :header %>
+  </div>
+  <%= yield %>
+  <div class="footer">
+    im footer
+    <%= yield :footer %>
+  </div>
 </body>
 </html>

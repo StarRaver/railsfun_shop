@@ -20,7 +20,7 @@ gem 'rails-pry'  #取代irb
 gem 'devise'  #用於註冊系統
 gem 'paperclip' #上傳系統
 gem 'faker' #假資料產生器，亂數給予如城市、數字等資料
-
+gem 'simple_captcha2', '~> 0.4.3' 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,6 +1,34 @@
 Rails.application.routes.draw do
+
+  root :to => 'items#index'
+  post 'items', :to => 'items#index'
+  #get "hello", :to => 'hihi#tester', :as => 'hihihihi'
+  #post "kitty", :to => 'items#index'
+  #delete "kitty2", :to => 'items#index'
+  
+=begin
+  get "dog/:id/:type/:meows/:wow" , :to => 'nono#meow'     #自訂參數路徑,此例接四個參數id,type,meows,wow
+  match "dog/:id/:type/:meows/:wow" , :to => 'nono#meow' , :via => [:get, :patch, :delete]
+
+
+  resources :yooo, :only => [:show] do
+    collection do 
+      get :yooo
+    end
+    member do
+      get :hooo
+    end
+  end
+=end
+=begin
   resources :cates
-  resources :items
+  resources :items do
+    member do
+      get :add_cart
+    end
+  end
+
+
   devise_for :managers
   devise_for :users
   #resources :statics , :only => [:index]
@@ -18,6 +46,7 @@ Rails.application.routes.draw do
       resources :managers
     end
   end
+=end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
